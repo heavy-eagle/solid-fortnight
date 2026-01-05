@@ -6,7 +6,7 @@ on:
     paths:
       - "Dockerfile"
       - "root-ca.crt"
-      - ".github/workflows/build-ci-image.yml"
+      - ".github/workflows/build-ci-image.yaml"
 
 jobs:
   build:
