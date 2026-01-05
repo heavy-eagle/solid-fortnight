@@ -1,0 +1,32 @@
+name: Build CI Base Image
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - "Dockerfile"
+      - "root-ca.crt"
+      - ".github/workflows/build-ci-image.yml"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build image
+        run: |
+          docker build -t ghcr.io/${{ github.repository_owner }}/ci-base:latest .
+
+      - name: Push image
+        run: |
+          docker push ghcr.io/${{ github.repository_owner }}/ci-base:latest
