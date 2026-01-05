@@ -9,5 +9,5 @@ COPY root-ca.crt /usr/local/share/ca-certificates/root-ca.crt
 # Update trust store
 RUN update-ca-certificates
 
-# Default shell
+# Default shell (bash)
 CMD ["/bin/bash"]
