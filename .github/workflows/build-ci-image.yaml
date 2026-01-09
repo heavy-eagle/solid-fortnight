@@ -1,6 +1,8 @@
 name: Build CI Base Image
 
 on:
+  schedule:
+    - cron: "0 3 1 * *"
   push:
     branches: [ "main" ]
     paths:
