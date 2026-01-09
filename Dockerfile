@@ -1,7 +1,7 @@
 FROM eclipse-temurin:17-jdk-alpine
 
 # Install CA certificates and common CI tools
-RUN apk add --no-cache curl nodejs npm ca-certificates git make tar
+RUN apk update && apk add --no-cache curl nodejs npm ca-certificates git make tar docker-cli
 
 # Add CA
 COPY root-ca.crt /usr/local/share/ca-certificates/root-ca.crt
