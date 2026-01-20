@@ -9,6 +9,7 @@ on:
       - "Dockerfile"
       - "root-ca.crt"
       - ".github/workflows/build-ci-image.yaml"
+  workflow_dispatch:
 
 jobs:
   build:
