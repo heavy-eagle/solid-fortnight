@@ -1,7 +1,7 @@
 FROM amazoncorretto:17-alpine-jdk
 
 # Install CA certificates and common CI tools
-RUN apk update && apk upgrade --no-cache && apk add --no-cache curl nodejs npm ca-certificates git make tar docker-cli go
+RUN apk update && apk upgrade --no-cache && apk add --no-cache curl nodejs npm ca-certificates git make tar docker-cli go bash
 
 # add node apps
 RUN npm install -g renovate @quasar/cli
