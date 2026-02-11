@@ -1,7 +1,7 @@
 FROM amazoncorretto:17-alpine-jdk
 
 # Install CA certificates and common CI tools
-RUN apk update && apk upgrade --no-cache && apk add --no-cache curl nodejs npm ca-certificates git make tar docker-cli go bash jq grep
+RUN apk update && apk upgrade --no-cache && apk add --no-cache curl nodejs npm ca-certificates git make tar docker-cli go bash jq grep zstd
 
 # install tea
 RUN curl https://dl.gitea.com/tea/0.11.1/tea-0.11.1-linux-amd64 --output /usr/local/bin/tea && chmod a+x /usr/local/bin/tea
