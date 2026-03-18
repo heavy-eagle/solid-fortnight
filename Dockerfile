@@ -11,7 +11,7 @@ RUN curl -L https://github.com/gohugoio/hugo/releases/download/v0.158.0/hugo_ext
 RUN curl https://dl.gitea.com/tea/0.11.1/tea-0.11.1-linux-amd64 --output /usr/local/bin/tea && chmod a+x /usr/local/bin/tea
 
 # add node apps
-RUN npm install -g renovate @quasar/cli
+RUN npm install -g renovate @quasar/cli wrangler
 
 # Add CA
 COPY root-ca.crt /usr/local/share/ca-certificates/root-ca.crt
