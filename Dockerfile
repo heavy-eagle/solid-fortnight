@@ -1,4 +1,4 @@
-FROM amazoncorretto:17-alpine-jdk
+FROM amazoncorretto:21-alpine-jdk
 
 # Install CA certificates and common CI tools
 RUN apk update && apk upgrade --no-cache && apk add --no-cache curl nodejs npm ca-certificates git make tar docker-cli bash jq grep zstd pandoc-cli mkdocs tectonic font-urw-base35 kubectl
