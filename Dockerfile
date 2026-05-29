@@ -19,7 +19,7 @@ ENV PATH="/usr/local/go/bin:${PATH}"
 
 # Build EST Client
 COPY estcli estcli
-RUN cd estcli && go build -o /usr/local/bin/estcli && cd - && rm -rf estcli && echo "127.0.0.1 test.example.com" | sudo tee -a /etc/hosts && cat /etc/hosts
+RUN cd estcli && go build -o /usr/local/bin/estcli && cd - && rm -rf estcli
 
 # Install ACME client
 RUN curl https://get.acme.sh | sh -s email=my@example.com --install --home /usr/local/acme.sh && ln -s /usr/local/acme.sh/acme.sh /usr/local/bin/acme.sh
@@ -32,6 +32,11 @@ COPY root-ca.crt /usr/local/share/ca-certificates/root-ca.crt
 
 # Update trust store
 RUN update-ca-certificates
+
+# Entrypoint to modify /etc/hosts
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
 
 # Default shell (bash)
 CMD ["/bin/bash"]
