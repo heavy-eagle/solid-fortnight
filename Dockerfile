@@ -33,10 +33,5 @@ COPY root-ca.crt /usr/local/share/ca-certificates/root-ca.crt
 # Update trust store
 RUN update-ca-certificates
 
-# Entrypoint to modify /etc/hosts
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
-
 # Default shell (bash)
 CMD ["/bin/bash"]
