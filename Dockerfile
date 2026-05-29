@@ -19,7 +19,7 @@ ENV PATH="/usr/local/go/bin:${PATH}"
 
 # Build EST Client
 COPY estcli estcli
-RUN cd estcli && go build -o /usr/local/bin/estcli && cd - && rm -rf estcli
+RUN cd estcli && go build -o /usr/local/bin/estcli && cd - && rm -rf estcli && echo "127.0.0.1 test.example.com" | tee -a /etc/hosts && cat /etc/hosts
 
 # Install ACME client
 RUN curl https://get.acme.sh | sh -s email=my@example.com --install --home /usr/local/acme.sh && ln -s /usr/local/acme.sh/acme.sh /usr/local/bin/acme.sh
