@@ -19,7 +19,7 @@ ENV PATH="/usr/local/go/bin:${PATH}"
 
 # Build EST Client
 COPY estcli estcli
-RUN cd estcli && go build -o /usr/local/bin/estcli && cd -
+RUN cd estcli && go build -o /usr/local/bin/estcli && cd - && rm -rf estcli
 
 # add node apps
 RUN npm install -g renovate @quasar/cli wrangler @usebruno/cli
