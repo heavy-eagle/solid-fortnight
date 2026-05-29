@@ -22,7 +22,7 @@ COPY estcli estcli
 RUN cd estcli && go build -o /usr/local/bin/estcli && cd - && rm -rf estcli
 
 # Install ACME client
-RUN curl https://get.acme.sh | sh -s email=my@example.com
+RUN curl https://get.acme.sh | sh -s email=my@example.com --install --home /usr/local/acme.sh && ln -s /usr/local/acme.sh/acme.sh /usr/local/bin/acme.sh
 
 # add node apps
 RUN npm install -g renovate @quasar/cli wrangler @usebruno/cli
