@@ -18,6 +18,7 @@ RUN LATEST=$(curl -s https://go.dev/VERSION?m=text | head -n 1) && curl -L "http
 ENV PATH="/usr/local/go/bin:${PATH}"
 
 # Build EST Client
+COPY estcli estcli
 RUN cd estcli && go build -o /usr/local/bin/estcli && cd -
 
 # add node apps
