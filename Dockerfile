@@ -25,7 +25,7 @@ RUN cd estcli && go build -o /usr/local/bin/estcli && cd - && rm -rf estcli
 RUN curl https://get.acme.sh | sh -s email=my@example.com --install --home /usr/local/acme.sh && ln -s /usr/local/acme.sh/acme.sh /usr/local/bin/acme.sh
 
 # add node apps
-RUN npm install -g renovate @quasar/cli wrangler @usebruno/cli
+RUN npm install -g renovate @quasar/cli wrangler @usebruno/cli && mkdir /etc/renovate && echo "{\"hostRules\":[{\"matchHost\":\".*\",\"timeout\":300000}]}" > /etc/renovate/config.json
 
 # Add CA
 COPY root-ca.crt /usr/local/share/ca-certificates/root-ca.crt
