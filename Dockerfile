@@ -1,7 +1,7 @@
 FROM amazoncorretto:21-alpine-jdk
 
 # Install CA certificates and common CI tools
-RUN apk update && apk upgrade --no-cache && apk add --no-cache libc6-compat g++ curl ca-certificates nodejs npm git make tar docker-cli bash jq grep zstd pandoc-cli mkdocs tectonic font-urw-base35 kubectl openssl ripgrep
+RUN apk update && apk upgrade --no-cache && apk add --no-cache libc6-compat g++ curl ca-certificates nodejs npm git make tar docker-cli bash jq grep zstd pandoc-cli mkdocs tectonic font-urw-base35 kubectl openssl softhsm
 
 # install hugo
 RUN curl -L https://github.com/gohugoio/hugo/releases/download/v0.158.0/hugo_extended_0.158.0_linux-amd64.tar.gz --output hugo.tgz && \
